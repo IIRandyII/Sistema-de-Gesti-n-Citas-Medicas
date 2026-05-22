@@ -33,7 +33,6 @@
 
     <!-- Formulario -->
     <div class="page-title">Crear cuenta</div>
-    <div class="divider"></div>
 
     <div class="form-row">
       <div class="field">
@@ -50,7 +49,14 @@
 
     <div class="field">
       <label for="reg-email">Correo electrónico <span class="req">*</span></label>
-      <input id="reg-email" type="email" placeholder="ejemplo@correo.com"/>
+      <div class="input-wrap">
+        <span class="icon-left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
+          </svg>
+        </span>
+        <input id="reg-email" type="email" placeholder="ejemplo@correo.com"/>
+      </div>
       <span class="error-msg" id="err-reg-email">Ingresa un correo válido.</span>
     </div>
 
@@ -64,11 +70,28 @@
         Contraseña <span class="req">*</span>
         <span class="hint">(mínimo 8 caracteres)</span>
       </label>
-      <input id="reg-pass" type="password" placeholder="••••••••"/>
+      <div class="input-wrap">
+        <span class="icon-left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </span>
+        <input id="reg-pass" type="password" placeholder="••••••••" class="has-right"/>
+        <span class="icon-right" onclick="togglePass('reg-pass', this)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </span>
+      </div>
       <span class="error-msg" id="err-reg-pass">Mínimo 8 caracteres.</span>
     </div>
 
-    <button class="btn-primary" onclick="handleRegister()">Crear cuenta</button>
+    <button class="btn-primary" onclick="handleRegister()">
+      Crear cuenta
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>
+      </svg>
+    </button>
 
     <div class="footer-link">
       ¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a>

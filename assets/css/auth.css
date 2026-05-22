@@ -12,7 +12,7 @@
   --green-dark:   #1a5c38;
   --green-main:   #2e7d4f;
   --green-mid:    #3a9a62;
-  --green-light:  #578562;
+  --green-light:  #d4edda;
   --green-xlight: #eaf5ee;
   --bg:           #e8f5ed;
   --card:         #ffffff;
@@ -61,6 +61,7 @@ body::before {
   box-shadow: var(--shadow);
   padding: 40px 36px 36px;
   animation: slideUp .45s cubic-bezier(.22,1,.36,1) both;
+  border: 1.5px solid var(--green-light);
 }
 
 @keyframes slideUp {
@@ -112,12 +113,38 @@ body::before {
   margin-bottom: 22px;
 }
 
-/* ── DIVIDER ── */
-.divider {
-  width: 100%;
-  height: 1px;
-  background: var(--green-light);
-  margin: 6px 0 22px;
+/* ── DIVIDER — eliminado visualmente ── */
+.divider { display: none; }
+
+/* ── INPUT CON ICONO ── */
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap .icon-left,
+.input-wrap .icon-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: var(--muted);
+}
+
+.input-wrap .icon-left  { left: 12px; }
+.input-wrap .icon-right { right: 12px; pointer-events: all; cursor: pointer; }
+
+.input-wrap .icon-right:hover { color: var(--green-main); }
+
+.input-wrap input {
+  padding-left: 38px;
+}
+
+.input-wrap input.has-right {
+  padding-right: 38px;
 }
 
 /* ── FORM ── */
@@ -159,7 +186,7 @@ input {
   outline: none;
 }
 
-input::placeholder { color: #3b724f; }
+input::placeholder { color: #b0c9b9; }
 
 input:focus {
   border-color: var(--green-mid);
@@ -191,6 +218,10 @@ input.error { border-color: var(--error); }
   letter-spacing: .2px;
   transition: background .2s, transform .15s, box-shadow .2s;
   box-shadow: 0 4px 14px rgba(26,92,56,.30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .btn-primary:hover {

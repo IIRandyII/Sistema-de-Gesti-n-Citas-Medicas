@@ -27,3 +27,15 @@ function setError(errorId, show) {
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
+
+/**
+ * Alterna visibilidad de un campo password.
+ * @param {string} inputId - id del input
+ * @param {HTMLElement} btn - el icono clickeado
+ */
+function togglePass(inputId, btn) {
+  const input = document.getElementById(inputId);
+  const isText = input.type === 'text';
+  input.type = isText ? 'password' : 'text';
+  btn.style.color = isText ? '' : 'var(--green-main)';
+}
