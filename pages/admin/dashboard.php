@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../../includes/auth.php';
 requireRole('admin');
 ?>
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ requireRole('admin');
 <head>
   <meta charset="UTF-8"/>
   <title>Dashboard Admin — CitaÁgil</title>
-  <link rel="stylesheet" href="../assets/css/auth.css"/>
+  <link rel="stylesheet" href="../../assets/css/auth.css"/>
 </head>
 <body style="padding:40px; font-family:'Nunito',sans-serif;">
   <h1 style="color:#1a5c38;">👋 Bienvenido, <?= htmlspecialchars($_SESSION['nombre']) ?></h1>

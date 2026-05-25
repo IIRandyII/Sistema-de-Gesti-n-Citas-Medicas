@@ -1,9 +1,4 @@
 <?php
-// ============================================================
-//  pages/login.php
-//  CitaÁgil · Sistema de citas médicas
-// ============================================================
-
 if (session_status() === PHP_SESSION_NONE) session_start();
 
 // Si ya hay sesión activa, redirigir según rol
@@ -35,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 function redirectByRole(string $rol): string {
     return match($rol) {
-        'admin'   => '/CitaAgil1/pages/dashboard_admin.php',
-        'medico'  => '/CitaAgil1/pages/dashboard_medico.php',
-        'paciente'=> '/CitaAgil1/pages/dashboard_paciente.php',
+        'admin'   => '/CitaAgil1/pages/admin/dashboard.php',
+        'medico'  => '/CitaAgil1/pages/medico/dashboard.php',
+        'paciente'=> '/CitaAgil1/pages/paciente/dashboard.php',
         default   => '/CitaAgil1/pages/login.php',
     };
 }

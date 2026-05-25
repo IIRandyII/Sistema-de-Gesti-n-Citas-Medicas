@@ -1,10 +1,5 @@
 <?php
-// ============================================================
-//  pages/dashboard_medico.php
-//  CitaÁgil · Sistema de citas médicas
-// ============================================================
-
-require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../../includes/auth.php';
 requireRole('medico');
 ?>
 <!DOCTYPE html>
@@ -13,7 +8,7 @@ requireRole('medico');
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Panel médico — CitaÁgil</title>
-  <link rel="stylesheet" href="../assets/css/auth.css"/>
+  <link rel="stylesheet" href="../../assets/css/auth.css"/>
 </head>
 <body style="padding:40px; font-family:'Nunito',sans-serif;">
 
