@@ -1,6 +1,46 @@
 <?php
-// pages/login.php
-// TODO: lógica PHP de autenticación aquí
+// ============================================================
+//  pages/login.php
+//  CitaÁgil · Sistema de citas médicas
+// ============================================================
+
+session_start();
+
+// Si ya hay sesión activa, redirigir según rol
+if (!empty($_SESSION['rol'])) {
+    header('Location: ' . redirectByRole($_SESSION['rol']));
+    exit;
+}
+
+require_once __DIR__ . '/../includes/auth.php';
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $correo   = trim($_POST['correo']   ?? '');
+    $password = trim($_POST['password'] ?? '');
+
+    if (!$correo || !$password) {
+        $error = 'Completa todos los campos.';
+    } else {
+        $result = login($correo, $password);
+        if ($result['ok']) {
+            header('Location: ' . redirectByRole($result['rol']));
+            exit;
+        } else {
+            $error = $result['msg'];
+        }
+    }
+}
+
+function redirectByRole(string $rol): string {
+    return match($rol) {
+        'admin'   => '/CitaAgil1/pages/dashboard_admin.php',
+        'medico'  => '/CitaAgil1/pages/dashboard_medico.php',
+        'paciente'=> '/CitaAgil1/pages/dashboard_paciente.php',
+        default   => '/CitaAgil1/pages/login.php',
+    };
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,46 +71,56 @@
       <div class="logo-sub">Sistema de citas médicas</div>
     </div>
 
-    <!-- Formulario -->
     <div class="page-title">Iniciar sesión</div>
 
-    <div class="field">
-      <label for="login-email">Correo electrónico</label>
-      <div class="input-wrap">
-        <span class="icon-left">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
-          </svg>
-        </span>
-        <input id="login-email" type="email" placeholder="ejemplo@correo.com" autocomplete="email"/>
-      </div>
-      <span class="error-msg" id="err-login-email">Ingresa un correo válido.</span>
-    </div>
+    <?php if ($error): ?>
+      <div class="alert-error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
 
-    <div class="field">
-      <label for="login-pass">Contraseña</label>
-      <div class="input-wrap">
-        <span class="icon-left">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-          </svg>
-        </span>
-        <input id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password" class="has-right"/>
-        <span class="icon-right" onclick="togglePass('login-pass', this)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-          </svg>
-        </span>
-      </div>
-      <span class="error-msg" id="err-login-pass">Ingresa tu contraseña.</span>
-    </div>
+    <form method="POST" action="" novalidate>
 
-    <button class="btn-primary" onclick="handleLogin()">
-      Iniciar sesión
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>
-      </svg>
-    </button>
+      <div class="field">
+        <label for="login-email">Correo electrónico</label>
+        <div class="input-wrap">
+          <span class="icon-left">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
+            </svg>
+          </span>
+          <input id="login-email" name="correo" type="email"
+                 placeholder="ejemplo@correo.com" autocomplete="email"
+                 value="<?= htmlspecialchars($_POST['correo'] ?? '') ?>"/>
+        </div>
+        <span class="error-msg" id="err-login-email">Ingresa un correo válido.</span>
+      </div>
+
+      <div class="field">
+        <label for="login-pass">Contraseña</label>
+        <div class="input-wrap">
+          <span class="icon-left">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </span>
+          <input id="login-pass" name="password" type="password"
+                 placeholder="••••••••" autocomplete="current-password" class="has-right"/>
+          <span class="icon-right" data-target="login-pass">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </span>
+        </div>
+        <span class="error-msg" id="err-login-pass">Ingresa tu contraseña.</span>
+      </div>
+
+      <button type="submit" class="btn-primary">
+        Iniciar sesión
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>
+        </svg>
+      </button>
+
+    </form>
 
     <div class="footer-link">
       ¿No tienes cuenta? <a href="register.php">Regístrate aquí</a>
