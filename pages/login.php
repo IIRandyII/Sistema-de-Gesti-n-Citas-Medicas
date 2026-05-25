@@ -4,7 +4,7 @@
 //  CitaÁgil · Sistema de citas médicas
 // ============================================================
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) session_start();
 
 // Si ya hay sesión activa, redirigir según rol
 if (!empty($_SESSION['rol'])) {
@@ -73,8 +73,22 @@ function redirectByRole(string $rol): string {
 
     <div class="page-title">Iniciar sesión</div>
 
+    <?php if (isset($_GET['registered'])): ?>
+      <div class="toast" id="toast-registered">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        ¡Cuenta creada exitosamente!
+      </div>
+    <?php endif; ?>
+
     <?php if ($error): ?>
-      <div class="alert-error"><?= htmlspecialchars($error) ?></div>
+      <div class="toast toast-error">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <?= htmlspecialchars($error) ?>
+      </div>
     <?php endif; ?>
 
     <form method="POST" action="" novalidate>
@@ -131,5 +145,12 @@ function redirectByRole(string $rol): string {
 
 <script src="../assets/js/auth.js"></script>
 <script src="../assets/js/login.js"></script>
+
+<script>
+  <?php if (isset($_GET['registered'])): ?>
+  // Limpia el parámetro de la URL sin recargar
+  history.replaceState(null, '', 'login.php');
+  <?php endif; ?>
+</script>
 </body>
 </html>
