@@ -46,7 +46,7 @@ $ultimas_citas = $pdo->query("
   <div class="content">
 
     <div class="welcome">
-      <h1>👋 Bienvenido, <?= htmlspecialchars($_SESSION['nombre']) ?></h1>
+      <h1>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']) ?></h1>
       <p>Aquí tienes un resumen del sistema para hoy.</p>
     </div>
 

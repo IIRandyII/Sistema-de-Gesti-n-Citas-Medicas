@@ -5,23 +5,33 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ── SIDEBAR TOGGLE ──
-  const toggle  = document.getElementById('sidebarToggle');
-  const sidebar = document.querySelector('.sidebar');
-  const main    = document.querySelector('.main');
+// ── SIDEBAR TOGGLE ──
+const toggle  = document.getElementById('sidebarToggle');
+const sidebar = document.querySelector('.sidebar');
+const main    = document.querySelector('.main');
 
-  if (toggle && sidebar && main) {
-    if (localStorage.getItem('sidebar_collapsed') === 'true') {
-      sidebar.classList.add('collapsed');
-      main.classList.add('expanded');
+if (toggle && sidebar && main) {
+  if (localStorage.getItem('sidebar_collapsed') === 'true') {
+    sidebar.classList.add('collapsed');
+    main.classList.add('expanded');
+  }
+
+  toggle.addEventListener('click', function () {
+    const isCollapsing = !sidebar.classList.contains('collapsed');
+
+    if (isCollapsing) {
+      sidebar.style.transition = 'transform .35s cubic-bezier(.4,0,.2,1)';
+      main.style.transition    = 'margin-left .35s cubic-bezier(.4,0,.2,1)';
+    } else {
+      sidebar.style.transition = 'transform .35s cubic-bezier(.2,0,0,1)';
+      main.style.transition    = 'margin-left .35s cubic-bezier(.2,0,0,1)';
     }
 
-    toggle.addEventListener('click', function () {
-      sidebar.classList.toggle('collapsed');
-      main.classList.toggle('expanded');
-      localStorage.setItem('sidebar_collapsed', sidebar.classList.contains('collapsed'));
-    });
-  }
+    sidebar.classList.toggle('collapsed');
+    main.classList.toggle('expanded');
+    localStorage.setItem('sidebar_collapsed', sidebar.classList.contains('collapsed'));
+  });
+}
 
   // ── AVATAR DROPDOWN ──
   const avatarBtn      = document.getElementById('avatarBtn');
