@@ -1,0 +1,244 @@
+/* ============================================================
+   layout.css — Estilos base reutilizables del panel admin
+   CitaÁgil · Sistema de citas médicas
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-dark:   #1a5c38;
+  --green-main:   #2e7d4f;
+  --green-mid:    #3a9a62;
+  --green-light:  #e8f5ee;
+  --green-xlight: #f3f8f5;
+  --blue-light:   #e8f0fb;
+  --blue-main:    #3b6dd4;
+  --blue-dark:    #1e4db7;
+  --amber-light:  #fff8e6;
+  --amber-main:   #d4930a;
+  --amber-dark:   #a06b00;
+  --red-light:    #fef0f0;
+  --red-main:     #c0392b;
+  --text:         #1a2e22;
+  --muted:        #6b8a74;
+  --border:       #dde8e2;
+  --bg:           #f4f7f5;
+  --white:        #ffffff;
+  --sidebar-w:    220px;
+  --header-h:     60px;
+  --radius:       14px;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── LAYOUT ── */
+.layout { display: flex; min-height: 100vh; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--green-dark);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  z-index: 100;
+  transition: transform .3s ease;
+  overflow-y: auto;
+}
+
+.sidebar-logo {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar-logo .logo-icon {
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,.15);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar-logo .logo-icon svg { width: 18px; height: 18px; }
+
+.sidebar-logo .logo-text {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -.3px;
+}
+
+.sidebar-logo .logo-text span { color: #7ee8a2; }
+
+.sidebar-nav {
+  padding: 16px 12px;
+  flex: 1;
+}
+
+.nav-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,.45);
+  text-transform: uppercase;
+  padding: 0 8px;
+  margin: 16px 0 6px;
+}
+
+.nav-label:first-child { margin-top: 0; }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  font-size: .875rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.75);
+  cursor: pointer;
+  transition: all .18s;
+  margin-bottom: 2px;
+}
+
+.nav-item:hover { background: rgba(255,255,255,.1); color: #fff; }
+.nav-item.active { background: rgba(255,255,255,.18); color: #fff; }
+.nav-item i { font-size: 18px; width: 20px; text-align: center; }
+
+.sidebar-footer {
+  padding: 14px 12px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  flex-shrink: 0;
+}
+
+.nav-item.logout { color: #ff8a80; }
+.nav-item.logout:hover { background: rgba(255,100,80,.15); }
+
+/* ── MAIN ── */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  height: var(--header-h);
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 8px;
+  transition: color .15s, background .15s;
+}
+
+.sidebar-toggle:hover { color: var(--green-main); background: var(--green-light); }
+
+.header-titles { display: flex; flex-direction: column; }
+.header-title { font-size: 1rem; font-weight: 800; color: var(--green-dark); }
+.header-sub   { font-size: .75rem; color: var(--muted); font-weight: 500; }
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-date {
+  font-size: .78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--green-main);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem;
+  font-weight: 800;
+  cursor: default;
+  title: attr(title);
+}
+
+/* ── CONTENT WRAPPER ── */
+.content {
+  padding: 24px 28px;
+  flex: 1;
+}
+
+/* ── TOAST (reutilizable) ── */
+.toast {
+  position: fixed;
+  top: 24px; right: 24px;
+  background: var(--green-dark);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  font-size: .875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(26,92,56,.30);
+  z-index: 999;
+  animation: toastIn .35s cubic-bezier(.22,1,.36,1) both,
+             toastOut .4s ease 3.35s forwards;
+}
+
+.toast-error { background: var(--red-main); }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-16px); }
+}
+
+/* ── SIDEBAR COLLAPSED ── */
+.sidebar.collapsed { transform: translateX(-100%); }
+.main.expanded     { margin-left: 0; }
