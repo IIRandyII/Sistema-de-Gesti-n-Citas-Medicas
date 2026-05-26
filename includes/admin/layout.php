@@ -14,17 +14,17 @@
 
   <nav class="sidebar-nav">
 
-    <div class="nav-label">Gestión</div>
+    <div class="nav-label">General</div>
     <a href="/CitaAgil1/pages/admin/dashboard.php"
        class="nav-item <?= $current_page === 'dashboard' ? 'active' : '' ?>">
-      <i class="ti ti-calendar"></i> dashboard
+      <i class="ti ti-layout-dashboard"></i> Dashboard
     </a>
 
+    <div class="nav-label">Gestión</div>
     <a href="/CitaAgil1/pages/admin/citas.php"
        class="nav-item <?= $current_page === 'citas' ? 'active' : '' ?>">
-      <i class="ti ti-users"></i> Citas
+      <i class="ti ti-calendar"></i> Citas
     </a>
-
     <a href="/CitaAgil1/pages/admin/pacientes.php"
        class="nav-item <?= $current_page === 'pacientes' ? 'active' : '' ?>">
       <i class="ti ti-users"></i> Pacientes
@@ -57,18 +57,8 @@
        class="nav-item <?= $current_page === 'actividad' ? 'active' : '' ?>">
       <i class="ti ti-activity"></i> Actividad
     </a>
-    <a href="/CitaAgil1/pages/admin/configuracion.php"
-       class="nav-item <?= $current_page === 'configuracion' ? 'active' : '' ?>">
-      <i class="ti ti-settings"></i> Configuración
-    </a>
 
   </nav>
-
-  <div class="sidebar-footer">
-    <a href="/CitaAgil1/includes/logout.php" class="nav-item logout">
-      <i class="ti ti-logout"></i> Cerrar sesión
-    </a>
-  </div>
 </aside>
 
 <div class="main">
@@ -87,8 +77,51 @@
         <i class="ti ti-calendar" style="vertical-align:-2px"></i>
         <?= date('d') . ' de ' . ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][date('n')-1] . ' de ' . date('Y') ?>
       </span>
-      <div class="avatar" title="<?= htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido']) ?>">
-        <?= strtoupper(substr($_SESSION['nombre'], 0, 1) . substr($_SESSION['apellido'], 0, 1)) ?>
+
+      <!-- Avatar + Dropdown -->
+      <div class="avatar-wrap" id="avatarWrap">
+        <div class="avatar-trigger" id="avatarBtn">
+          <div class="avatar">
+            <?= strtoupper(substr($_SESSION['nombre'], 0, 1) . substr($_SESSION['apellido'], 0, 1)) ?>
+          </div>
+          <span class="avatar-name"><?= htmlspecialchars($_SESSION['nombre']) ?></span>
+          <i class="ti ti-chevron-down avatar-chevron" id="avatarChevron"></i>
+        </div>
+        <div class="avatar-dropdown" id="avatarDropdown">
+          <div class="dropdown-info">
+            <div class="dropdown-avatar">
+              <?= strtoupper(substr($_SESSION['nombre'], 0, 1) . substr($_SESSION['apellido'], 0, 1)) ?>
+            </div>
+            <div class="dropdown-info-text">
+              <div class="dropdown-name"><?= htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido']) ?></div>
+              <div class="dropdown-email"><?= htmlspecialchars($_SESSION['correo']) ?></div>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a href="/CitaAgil1/pages/admin/configuracion.php" class="dropdown-item">
+            <i class="ti ti-settings"></i> Configuración
+          </a>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item dropdown-logout" id="logoutBtn">
+            <i class="ti ti-logout"></i> Cerrar sesión
+          </button>
+        </div>
       </div>
+
     </div>
   </header>
+
+  <!-- Modal cerrar sesión -->
+  <div class="modal-overlay" id="logoutModal">
+    <div class="modal">
+      <div class="modal-icon">
+        <i class="ti ti-logout"></i>
+      </div>
+      <h3 class="modal-title">¿Cerrar sesión?</h3>
+      <p class="modal-desc">Tu sesión se cerrará y tendrás que volver a iniciar sesión para acceder al sistema.</p>
+      <div class="modal-actions">
+        <button class="modal-btn modal-cancel" id="logoutCancel">Cancelar</button>
+        <a href="/CitaAgil1/includes/logout.php" class="modal-btn modal-confirm">Sí, cerrar sesión</a>
+      </div>
+    </div>
+  </div>
