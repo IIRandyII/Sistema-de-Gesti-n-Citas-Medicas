@@ -47,17 +47,6 @@
        class="nav-item <?= $current_page === 'estadisticas' ? 'active' : '' ?>">
       <i class="ti ti-chart-bar"></i> Estadísticas
     </a>
-
-    <div class="nav-label">Sistema</div>
-    <a href="/CitaAgil1/pages/admin/usuarios.php"
-       class="nav-item <?= $current_page === 'usuarios' ? 'active' : '' ?>">
-      <i class="ti ti-shield-check"></i> Usuarios
-    </a>
-    <a href="/CitaAgil1/pages/admin/actividad.php"
-       class="nav-item <?= $current_page === 'actividad' ? 'active' : '' ?>">
-      <i class="ti ti-activity"></i> Actividad
-    </a>
-
   </nav>
 </aside>
 
