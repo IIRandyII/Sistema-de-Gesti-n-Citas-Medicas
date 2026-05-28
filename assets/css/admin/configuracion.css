@@ -1,0 +1,180 @@
+/* ============================================================
+   configuracion.css
+   CitaÁgil · Sistema de citas médicas
+   ============================================================ */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-title-text { font-size: 1.4rem; font-weight: 800; color: var(--text); }
+.page-sub        { font-size: .875rem; color: var(--muted); margin-top: 3px; }
+
+/* ── CONFIG GRID ── */
+.config-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.config-full { grid-column: 1 / -1; }
+
+/* ── CONFIG SECTION ── */
+.config-section {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.section-icon.green { background: var(--green-light); color: var(--green-main); }
+.section-icon.blue  { background: var(--blue-light);  color: var(--blue-main);  }
+.section-icon.amber { background: var(--amber-light); color: var(--amber-main); }
+
+.section-titulo { font-size: .95rem; font-weight: 800; color: var(--text); }
+.section-sub    { font-size: .78rem; color: var(--muted); margin-top: 2px; }
+
+/* ── CONFIG FORM ── */
+.config-form {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+
+.form-field { display: flex; flex-direction: column; gap: 5px; }
+
+.form-field label { font-size: .8rem; font-weight: 700; color: var(--text); }
+.form-field label .req { color: var(--green-mid); margin-left: 2px; }
+
+.form-field input,
+.form-select {
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .875rem;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  width: 100%;
+}
+
+.form-field input:focus,
+.form-select:focus {
+  border-color: var(--green-mid);
+  box-shadow: 0 0 0 3px rgba(58,154,98,.12);
+  background: var(--white);
+}
+
+.input-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon-wrap > i:first-child {
+  position: absolute;
+  left: 12px;
+  color: var(--muted);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.input-icon-wrap input { padding-left: 38px; }
+.input-icon-wrap.has-right input { padding-right: 38px; }
+
+.toggle-pass {
+  position: absolute;
+  right: 12px;
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color .15s;
+}
+
+.toggle-pass:hover { color: var(--green-main); }
+
+/* ── DÍAS LABORABLES ── */
+.dias-wrap {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dia-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .18s;
+  user-select: none;
+}
+
+.dia-check input { display: none; }
+
+.dia-check:hover { border-color: var(--green-mid); color: var(--green-dark); }
+
+.dia-check.active {
+  background: var(--green-light);
+  border-color: var(--green-main);
+  color: var(--green-dark);
+}
+
+/* ── FORM ACTIONS ── */
+.form-actions { display: flex; justify-content: flex-end; padding-top: 4px; }
+
+.btn-guardar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--green-dark);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .18s, transform .15s;
+}
+
+.btn-guardar:hover { background: var(--green-main); transform: translateY(-1px); }
+.btn-guardar.btn-blue  { background: var(--blue-main); }
+.btn-guardar.btn-blue:hover  { background: var(--blue-dark); }
+.btn-guardar.btn-amber { background: var(--amber-main); }
+.btn-guardar.btn-amber:hover { background: var(--amber-dark); }
+.btn-guardar i { font-size: 17px; }
