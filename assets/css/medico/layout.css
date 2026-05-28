@@ -9,11 +9,11 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --blue-dark:    #1a3a6b;
-  --blue-main:    #2e5fd4;
-  --blue-mid:     #4a7ae8;
-  --blue-light:   #e8f0fb;
-  --blue-xlight:  #f3f6fd;
+  --blue-dark:    #1a5c38;
+  --blue-main:    #2e7d4f;
+  --blue-mid:     #3a9a62;
+  --blue-light:   #e8f5ee;
+  --blue-xlight:  #f3f8f5;
   --green-light:  #e8f5ee;
   --green-main:   #2e7d4f;
   --amber-light:  #fff8e6;
@@ -23,10 +23,10 @@
   --red-main:     #c0392b;
   --teal-light:   #e0f5ec;
   --teal-main:    #1a8a5a;
-  --text:         #1a2438;
-  --muted:        #6b7a94;
-  --border:       #dde3ee;
-  --bg:           #f4f6fb;
+  --text:         #1a2e22;
+  --muted:        #6b8a74;
+  --border:       #dde8e2;
+  --bg:           #f4f7f5;
   --white:        #ffffff;
   --sidebar-w:    220px;
   --header-h:     60px;
