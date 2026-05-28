@@ -143,17 +143,11 @@ $ultimas_citas = $pdo->query("
           <h3><i class="ti ti-bolt" style="vertical-align:-2px; margin-right:6px; color:var(--green-main)"></i>Accesos rápidos</h3>
         </div>
         <div class="actions-list">
-          <a href="/CitaAgil1/pages/admin/pacientes.php" class="action-btn">
-            <i class="ti ti-user-plus"></i><span>Nuevo paciente</span><i class="ti ti-chevron-right arrow"></i>
-          </a>
           <a href="/CitaAgil1/pages/admin/medicos.php" class="action-btn">
             <i class="ti ti-medical-cross"></i><span>Nuevo médico</span><i class="ti ti-chevron-right arrow"></i>
           </a>
-          <a href="/CitaAgil1/pages/admin/citas.php" class="action-btn">
-            <i class="ti ti-calendar-plus"></i><span>Nueva cita</span><i class="ti ti-chevron-right arrow"></i>
-          </a>
-          <a href="/CitaAgil1/pages/admin/usuarios.php" class="action-btn">
-            <i class="ti ti-users"></i><span>Gestionar usuarios</span><i class="ti ti-chevron-right arrow"></i>
+          <a href="/CitaAgil1/pages/admin/estadisticas.php" class="action-btn">
+            <i class="ti ti-chart-bar"></i><span>Ver estadísticas</span><i class="ti ti-chevron-right arrow"></i>
           </a>
           <a href="/CitaAgil1/pages/admin/reportes.php" class="action-btn">
             <i class="ti ti-report"></i><span>Ver reportes</span><i class="ti ti-chevron-right arrow"></i>
