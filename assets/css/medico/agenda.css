@@ -1,0 +1,301 @@
+/* ============================================================
+   agenda.css — Estilos de la agenda médica
+   CitaÁgil · Sistema de citas médicas
+   ============================================================ */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-title-text { font-size: 1.4rem; font-weight: 800; color: var(--text); }
+.page-sub        { font-size: .875rem; color: var(--muted); margin-top: 3px; }
+
+/* ── VISTA TOGGLE ── */
+.vista-toggle {
+  display: flex;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.vista-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 9px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--muted);
+  transition: all .18s;
+}
+
+.vista-btn:hover  { color: var(--text); background: var(--blue-xlight); }
+.vista-btn.active { background: var(--blue-main); color: #fff; }
+.vista-btn i      { font-size: 16px; }
+
+/* ── AGENDA CARD ── */
+.agenda-card {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* ── AGENDA NAV ── */
+.agenda-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-arrow {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: all .18s;
+  flex-shrink: 0;
+}
+
+.nav-arrow:hover { background: var(--blue-xlight); color: var(--blue-main); border-color: var(--blue-mid); }
+
+.agenda-fecha-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.agenda-fecha {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.hoy-badge {
+  background: var(--blue-main);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.btn-hoy {
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--blue-xlight);
+  border: 1px solid var(--border);
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--blue-main);
+  transition: all .18s;
+  white-space: nowrap;
+}
+
+.btn-hoy:hover { background: var(--blue-light); border-color: var(--blue-mid); }
+
+/* ── CITAS DIARIA ── */
+.citas-diaria { padding: 8px 0; }
+
+.cita-row {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+
+.cita-row:last-child { border-bottom: none; }
+.cita-row:hover { background: var(--blue-xlight); }
+
+.cita-time {
+  width: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 16px 0;
+  border-right: 1px solid var(--border);
+}
+
+.cita-hora {
+  font-size: .85rem;
+  font-weight: 800;
+  color: var(--blue-main);
+  background: var(--blue-light);
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.cita-content {
+  flex: 1;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cita-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.patient-cell { display: flex; align-items: center; gap: 10px; }
+
+.mini-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 800;
+  flex-shrink: 0;
+}
+
+.cita-paciente { font-size: .9rem; font-weight: 700; color: var(--text); }
+.cita-contacto { font-size: .75rem; color: var(--muted); margin-top: 1px; }
+
+.cita-motivo {
+  font-size: .8rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cita-motivo i { font-size: 14px; }
+
+/* ── BADGES ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge.pendiente  { background: var(--amber-light); color: var(--amber-dark); }
+.badge.confirmada { background: var(--blue-light);   color: var(--blue-main);  }
+.badge.cancelada  { background: var(--red-light);    color: var(--red-main);   }
+.badge.completada { background: var(--teal-light);   color: var(--teal-main);  }
+
+/* ── VISTA SEMANAL ── */
+.semana-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  min-height: 400px;
+}
+
+.dia-col {
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+
+.dia-col:last-child { border-right: none; }
+.dia-col.hoy { background: var(--blue-xlight); }
+
+.dia-header {
+  padding: 12px 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.dia-nombre {
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.dia-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.dia-num.hoy-num {
+  background: var(--blue-main);
+  color: #fff;
+}
+
+.dia-citas {
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.cita-chip {
+  padding: 5px 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  cursor: default;
+}
+
+.cita-chip.pendiente  { background: var(--amber-light); }
+.cita-chip.confirmada { background: var(--blue-light);  }
+.cita-chip.cancelada  { background: var(--red-light);   }
+.cita-chip.completada { background: var(--teal-light);  }
+
+.chip-hora {
+  font-size: .68rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.chip-nombre {
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dia-vacio {
+  font-size: .72rem;
+  color: var(--border);
+  text-align: center;
+  padding: 12px 0;
+  font-weight: 600;
+}
+
+/* ── EMPTY STATE ── */
+.empty-state { padding: 48px 20px; text-align: center; color: var(--muted); }
+.empty-state i { font-size: 40px; margin-bottom: 10px; display: block; color: var(--border); }
+.empty-state p { font-size: .85rem; }
