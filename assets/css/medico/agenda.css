@@ -70,18 +70,9 @@
 
 .nav-arrow:hover { background: var(--blue-xlight); color: var(--blue-main); border-color: var(--blue-mid); }
 
-.agenda-fecha-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-}
+.agenda-fecha-wrap { display: flex; align-items: center; gap: 8px; flex: 1; }
 
-.agenda-fecha {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--text);
-}
+.agenda-fecha { font-size: 1rem; font-weight: 800; color: var(--text); }
 
 .hoy-badge {
   background: var(--blue-main);
@@ -111,7 +102,6 @@
 
 .cita-row {
   display: flex;
-  gap: 0;
   border-bottom: 1px solid var(--border);
   transition: background .15s;
 }
@@ -151,9 +141,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
-.patient-cell { display: flex; align-items: center; gap: 10px; }
+.patient-cell  { display: flex; align-items: center; gap: 10px; }
+.patient-name  { font-weight: 700; color: var(--text); }
 
 .mini-avatar {
   width: 34px; height: 34px;
@@ -177,6 +169,60 @@
 }
 
 .cita-motivo i { font-size: 14px; }
+
+/* ── ACCIONES DIARIA ── */
+.cita-acciones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-estatus {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all .18s;
+}
+
+.btn-estatus.confirmar {
+  background: var(--blue-light);
+  color: var(--blue-main);
+}
+
+.btn-estatus.confirmar:hover {
+  background: var(--blue-main);
+  color: #fff;
+}
+
+.btn-estatus.cancelar {
+  background: var(--red-light);
+  color: var(--red-main);
+}
+
+.btn-estatus.cancelar:hover {
+  background: var(--red-main);
+  color: #fff;
+}
+
+.btn-estatus.completar {
+  background: var(--teal-light);
+  color: var(--teal-main);
+}
+
+.btn-estatus.completar:hover {
+  background: var(--teal-main);
+  color: #fff;
+}
+
+.btn-estatus i { font-size: 14px; }
 
 /* ── BADGES ── */
 .badge {
@@ -209,12 +255,7 @@
   min-height: 400px;
 }
 
-.dia-col {
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-}
-
+.dia-col { border-right: 1px solid var(--border); display: flex; flex-direction: column; }
 .dia-col:last-child { border-right: none; }
 .dia-col.hoy { background: var(--blue-xlight); }
 
@@ -245,18 +286,9 @@
   color: var(--text);
 }
 
-.dia-num.hoy-num {
-  background: var(--blue-main);
-  color: #fff;
-}
+.dia-num.hoy-num { background: var(--blue-main); color: #fff; }
 
-.dia-citas {
-  padding: 8px 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
-}
+.dia-citas { padding: 8px 6px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
 
 .cita-chip {
   padding: 5px 8px;
@@ -264,7 +296,6 @@
   display: flex;
   flex-direction: column;
   gap: 1px;
-  cursor: default;
 }
 
 .cita-chip.pendiente  { background: var(--amber-light); }
@@ -272,28 +303,156 @@
 .cita-chip.cancelada  { background: var(--red-light);   }
 .cita-chip.completada { background: var(--teal-light);  }
 
-.chip-hora {
-  font-size: .68rem;
-  font-weight: 800;
-  color: var(--muted);
+.chip-hora   { font-size: .68rem; font-weight: 800; color: var(--muted); }
+.chip-nombre { font-size: .72rem; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.dia-vacio { font-size: .72rem; color: var(--border); text-align: center; padding: 12px 0; font-weight: 600; }
+
+/* ── VISTA LISTA ── */
+.table-card {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
 }
 
-.chip-nombre {
+.table-toolbar {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+
+.filter-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--muted);
+  transition: all .18s;
+}
+
+.filter-tab:hover  { background: var(--blue-xlight); color: var(--text); }
+.filter-tab.active { background: var(--blue-light);  color: var(--blue-dark); }
+
+.filter-count {
+  background: var(--bg);
+  color: var(--muted);
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 20px;
+}
+
+.filter-tab.active .filter-count { background: var(--blue-dark); color: #fff; }
+
+.search-form { display: flex; }
+
+.search-wrap { position: relative; display: flex; align-items: center; }
+
+.search-icon { position: absolute; left: 10px; color: var(--muted); font-size: 16px; pointer-events: none; }
+
+.search-input {
+  padding: 8px 36px 8px 34px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .85rem;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  width: 220px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.search-input:focus {
+  border-color: var(--blue-mid);
+  box-shadow: 0 0 0 3px rgba(58,154,98,.12);
+  background: var(--white);
+}
+
+.search-clear { position: absolute; right: 10px; color: var(--muted); font-size: 14px; display: flex; align-items: center; transition: color .15s; }
+.search-clear:hover { color: var(--red-main); }
+
+.table-wrap { overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+
+thead th {
+  padding: 11px 16px;
+  text-align: left;
   font-size: .72rem;
   font-weight: 700;
-  color: var(--text);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  background: var(--blue-xlight);
+  border-bottom: 1px solid var(--border);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.dia-vacio {
-  font-size: .72rem;
-  color: var(--border);
-  text-align: center;
-  padding: 12px 0;
-  font-weight: 600;
+tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--blue-xlight); }
+tbody td { padding: 12px 16px; vertical-align: middle; }
+
+.text-muted { color: var(--muted); font-size: .82rem; }
+
+.actions-cell { display: flex; align-items: center; gap: 6px; }
+
+.action-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all .18s;
 }
+
+.action-icon.success:hover { background: var(--blue-light);  color: var(--blue-main); border-color: var(--blue-mid); }
+.action-icon.danger:hover  { background: var(--red-light);   color: var(--red-main);  border-color: var(--red-main); }
+.action-icon.teal:hover    { background: var(--teal-light);  color: var(--teal-main); border-color: var(--teal-main); }
+
+/* ── PAGINATION ── */
+.pagination {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pagination-info { font-size: .78rem; color: var(--muted); font-weight: 600; }
+.pagination-btns { display: flex; gap: 4px; }
+
+.pag-btn {
+  min-width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--muted);
+  transition: all .18s;
+  padding: 0 8px;
+}
+
+.pag-btn:hover  { background: var(--blue-xlight); color: var(--blue-dark); border-color: var(--blue-mid); }
+.pag-btn.active { background: var(--blue-main); color: #fff; border-color: var(--blue-main); }
 
 /* ── EMPTY STATE ── */
 .empty-state { padding: 48px 20px; text-align: center; color: var(--muted); }

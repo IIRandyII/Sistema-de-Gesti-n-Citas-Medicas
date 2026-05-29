@@ -31,11 +31,7 @@
        class="nav-item <?= $current_page === 'agenda' ? 'active' : '' ?>">
       <i class="ti ti-calendar-week"></i> Agenda
     </a>
-    <a href="/CitaAgil1/pages/medico/citas.php"
-       class="nav-item <?= $current_page === 'citas' ? 'active' : '' ?>">
-      <i class="ti ti-calendar"></i> Mis citas
-    </a>
-
+    
     <div class="nav-label">Pacientes</div>
     <a href="/CitaAgil1/pages/medico/pacientes.php"
        class="nav-item <?= $current_page === 'pacientes' ? 'active' : '' ?>">

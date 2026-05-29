@@ -150,9 +150,6 @@ $ultimas_citas = $stmt->fetchAll();
           <a href="/CitaAgil1/pages/medico/agenda.php" class="action-btn">
             <i class="ti ti-calendar-week"></i><span>Ver agenda</span><i class="ti ti-chevron-right arrow"></i>
           </a>
-          <a href="/CitaAgil1/pages/medico/citas.php" class="action-btn">
-            <i class="ti ti-calendar"></i><span>Mis citas</span><i class="ti ti-chevron-right arrow"></i>
-          </a>
           <a href="/CitaAgil1/pages/medico/pacientes.php" class="action-btn">
             <i class="ti ti-users"></i><span>Mis pacientes</span><i class="ti ti-chevron-right arrow"></i>
           </a>
