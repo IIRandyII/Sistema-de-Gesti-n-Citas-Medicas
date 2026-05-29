@@ -1,0 +1,352 @@
+/* ============================================================
+   pacientes.css — Mis pacientes médico
+   CitaÁgil · Sistema de citas médicas
+   ============================================================ */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-title-text { font-size: 1.4rem; font-weight: 800; color: var(--text); }
+.page-sub        { font-size: .875rem; color: var(--muted); margin-top: 3px; }
+
+/* ── LAYOUT ── */
+.pacientes-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.pacientes-layout.with-detail {
+  grid-template-columns: 340px 1fr;
+}
+
+/* ── LISTA WRAP ── */
+.pacientes-list-wrap {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-toolbar {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-form { flex: 1; }
+
+.search-wrap { position: relative; display: flex; align-items: center; }
+
+.search-icon { position: absolute; left: 10px; color: var(--muted); font-size: 15px; pointer-events: none; }
+
+.search-input {
+  width: 100%;
+  padding: 8px 32px 8px 32px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .83rem;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color .2s;
+}
+
+.search-input:focus { border-color: var(--blue-mid); background: var(--white); }
+
+.search-clear { position: absolute; right: 10px; color: var(--muted); font-size: 13px; display: flex; align-items: center; }
+.search-clear:hover { color: var(--red-main); }
+
+.list-count { font-size: .75rem; font-weight: 700; color: var(--muted); white-space: nowrap; }
+
+/* ── PACIENTES LIST ── */
+.pacientes-list { overflow-y: auto; max-height: calc(100vh - 280px); }
+
+.paciente-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+  cursor: pointer;
+}
+
+.paciente-item:last-child { border-bottom: none; }
+.paciente-item:hover  { background: var(--blue-xlight); }
+.paciente-item.active { background: var(--blue-light); }
+
+.pac-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .78rem; font-weight: 800;
+  flex-shrink: 0;
+}
+
+.paciente-item.active .pac-avatar { background: var(--blue-main); color: #fff; }
+
+.pac-info { flex: 1; min-width: 0; }
+.pac-nombre { font-size: .875rem; font-weight: 700; color: var(--text); }
+.pac-meta   { font-size: .72rem; color: var(--muted); margin-top: 2px; }
+
+.pac-arrow { font-size: 14px; color: var(--muted); flex-shrink: 0; }
+
+/* ── DETALLE PACIENTE ── */
+.paciente-detail {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--blue-main);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 800;
+  flex-shrink: 0;
+}
+
+.detail-nombre { font-size: 1rem; font-weight: 800; color: var(--text); }
+.detail-meta   { font-size: .75rem; color: var(--muted); margin-top: 2px; }
+.detail-info   { flex: 1; }
+
+.detail-close {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  transition: all .18s;
+  flex-shrink: 0;
+}
+
+.detail-close:hover { background: var(--red-light); color: var(--red-main); border-color: var(--red-main); }
+
+/* ── TABS ── */
+.detail-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  padding: 0 16px;
+  gap: 4px;
+}
+
+.detail-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all .18s;
+  margin-bottom: -1px;
+}
+
+.detail-tab:hover  { color: var(--blue-main); }
+.detail-tab.active { color: var(--blue-main); border-bottom-color: var(--blue-main); }
+.detail-tab i      { font-size: 16px; }
+
+.tab-count {
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  font-size: .68rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 20px;
+}
+
+/* ── TAB CONTENT ── */
+.tab-content { display: none; overflow-y: auto; max-height: calc(100vh - 380px); }
+.tab-content.active { display: block; }
+
+/* ── HISTORIAL ── */
+.historial-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+}
+
+.historial-item:last-child { border-bottom: none; }
+.historial-item:hover { background: var(--blue-xlight); }
+
+.hist-fecha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 40px;
+  background: var(--blue-light);
+  border-radius: 10px;
+  padding: 6px 8px;
+}
+
+.hist-dia { font-size: 1rem; font-weight: 800; color: var(--blue-dark); line-height: 1; }
+.hist-mes { font-size: .62rem; font-weight: 700; color: var(--blue-main); text-transform: uppercase; }
+
+.hist-info  { flex: 1; }
+.hist-hora  { font-size: .8rem; font-weight: 700; color: var(--text); }
+.hist-motivo{ font-size: .75rem; color: var(--muted); margin-top: 2px; }
+
+/* ── BADGES ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+.badge.pendiente  { background: var(--amber-light); color: var(--amber-dark); }
+.badge.confirmada { background: var(--blue-light);   color: var(--blue-main);  }
+.badge.cancelada  { background: var(--red-light);    color: var(--red-main);   }
+.badge.completada { background: var(--teal-light);   color: var(--teal-main);  }
+
+/* ── NOTAS ── */
+.nota-form-wrap {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--blue-xlight);
+}
+
+.nota-form { display: flex; flex-direction: column; gap: 10px; }
+
+.nota-select-wrap { display: flex; }
+
+.nota-select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .82rem;
+  color: var(--text);
+  background: var(--white);
+  outline: none;
+  transition: border-color .2s;
+}
+
+.nota-select:focus { border-color: var(--blue-mid); }
+
+.nota-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .83rem;
+  color: var(--text);
+  background: var(--white);
+  outline: none;
+  resize: vertical;
+  transition: border-color .2s;
+}
+
+.nota-textarea:focus { border-color: var(--blue-mid); }
+
+.btn-nota {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  background: var(--blue-main);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .18s;
+  align-self: flex-end;
+}
+
+.btn-nota:hover { background: var(--blue-dark); }
+.btn-nota i { font-size: 15px; }
+
+.nota-item {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nota-item:last-child { border-bottom: none; }
+
+.nota-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.nota-fecha {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--blue-main);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nota-fecha i { font-size: 13px; }
+.nota-time    { font-size: .72rem; color: var(--muted); }
+.nota-texto   { font-size: .83rem; color: var(--text); line-height: 1.6; }
+
+/* ── DETAIL PLACEHOLDER ── */
+.detail-placeholder {
+  background: var(--white);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--muted);
+  min-height: 300px;
+}
+
+.detail-placeholder i { font-size: 48px; color: var(--border); }
+.detail-placeholder p { font-size: .875rem; font-weight: 600; }
+
+/* ── EMPTY STATE ── */
+.empty-state { padding: 36px 20px; text-align: center; color: var(--muted); }
+.empty-state i { font-size: 36px; margin-bottom: 8px; display: block; color: var(--border); }
+.empty-state p { font-size: .82rem; }
