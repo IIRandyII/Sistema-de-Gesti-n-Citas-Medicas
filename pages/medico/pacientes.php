@@ -1,9 +1,4 @@
 <?php
-// ============================================================
-//  pages/medico/pacientes.php
-//  CitaÁgil · Sistema de citas médicas
-// ============================================================
-
 require_once __DIR__ . '/../../includes/auth.php';
 requireRole('medico');
 
