@@ -165,7 +165,7 @@ El sistema utiliza las siguientes tablas:
 
 **1. Clonar el repositorio**
 ```bash
-git clone https://github.com/IIRandyll/Sistema-de-Gesti-n-Citas-Medicas.git
+
 ```
 
 **2. Mover a la carpeta del servidor**
