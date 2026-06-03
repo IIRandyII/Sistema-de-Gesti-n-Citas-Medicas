@@ -1,16 +1,4 @@
 # CitaÁgil — Sistema de Citas Médicas
-
-<p align="center">
-  <img src="assets/images/banner.png" alt="CitaÁgil Banner" width="100%" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php&logoColor=white" />
-  <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-  <img src="https://img.shields.io/badge/WAMP-Apache-CA2127?style=for-the-badge&logo=apache&logoColor=white" />
-  <img src="https://img.shields.io/badge/Chart.js-4.4-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" />
-</p>
-
 ---
 
 ## 📽️ Demo
@@ -165,7 +153,7 @@ El sistema utiliza las siguientes tablas:
 
 **1. Clonar el repositorio**
 ```bash
-
+git clone https://github.com/IIRandyII/Sistema-de-Gesti-n-Citas-Medicas.git
 ```
 
 **2. Mover a la carpeta del servidor**
