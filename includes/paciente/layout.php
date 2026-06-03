@@ -33,7 +33,7 @@
     <div class="nav-label">Mi historial</div>
     <a href="/CitaAgil1/pages/paciente/historial.php"
        class="nav-item <?= $current_page === 'historial' ? 'active' : '' ?>">
-      <i class="ti ti-notes-medical"></i> Historial médico
+      <i class="ti ti-report-medical"></i> Historial médico
     </a>
 
   </nav>

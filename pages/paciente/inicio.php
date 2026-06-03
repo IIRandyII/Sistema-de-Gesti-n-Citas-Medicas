@@ -93,7 +93,7 @@ $cnt_completadas = $stmt->fetchColumn();
 
     <!-- Bienvenida -->
     <div class="welcome">
-      <h1>Hola, <?= htmlspecialchars($_SESSION['nombre']) ?> 👋</h1>
+      <h1>Hola, <?= htmlspecialchars($_SESSION['nombre']) ?></h1>
       <p>Bienvenido a tu portal de citas médicas.</p>
     </div>
 
@@ -168,7 +168,7 @@ $cnt_completadas = $stmt->fetchColumn();
             <i class="ti ti-chevron-right acceso-arrow"></i>
           </a>
           <a href="/CitaAgil1/pages/paciente/historial.php" class="acceso-btn">
-            <div class="acceso-icon amber"><i class="ti ti-notes-medical"></i></div>
+            <div class="acceso-icon amber"><i class="ti ti-report-medical"></i></i></div>
             <div class="acceso-info">
               <div class="acceso-titulo">Historial médico</div>
               <div class="acceso-sub">Ver notas y consultas pasadas</div>
